@@ -26,50 +26,42 @@ const Preview = ({ markdown }) => {
   };
 
   return (
-    <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-        <div style={{ display: 'flex', gap: '1rem' }}>
+    <div className="h-full flex flex-col">
+      <div className="flex justify-between items-center mb-6">
+        <div className="flex gap-4">
           <button 
             onClick={() => setActiveTab('preview')}
-            style={{ 
-              background: activeTab === 'preview' ? 'var(--accent-primary)' : 'transparent',
-              color: activeTab === 'preview' ? 'white' : 'var(--text-secondary)',
-              padding: '0.5rem 1rem', borderRadius: '8px', fontWeight: 'bold'
-            }}
+            className={`px-4 py-2 rounded-lg font-bold transition-colors ${activeTab === 'preview' ? 'bg-accentPrimary text-white' : 'text-textSecondary hover:bg-black/10'}`}
           >
             Preview
           </button>
           <button 
             onClick={() => setActiveTab('code')}
-            style={{ 
-              background: activeTab === 'code' ? 'var(--accent-primary)' : 'transparent',
-              color: activeTab === 'code' ? 'white' : 'var(--text-secondary)',
-              padding: '0.5rem 1rem', borderRadius: '8px', fontWeight: 'bold'
-            }}
+            className={`px-4 py-2 rounded-lg font-bold transition-colors ${activeTab === 'code' ? 'bg-accentPrimary text-white' : 'text-textSecondary hover:bg-black/10'}`}
           >
             Raw Code
           </button>
         </div>
         
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
-          <button onClick={handleCopy} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'var(--panel-bg)', color: 'var(--text-primary)', padding: '0.5rem 1rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
-            {copied ? <CheckCircle2 size={16} color="green" /> : <Copy size={16} />}
+        <div className="flex gap-2">
+          <button onClick={handleCopy} className="flex items-center gap-2 bg-panelBg text-textPrimary px-4 py-2 rounded-lg border border-borderMain hover:bg-black/20 transition-colors">
+            {copied ? <CheckCircle2 size={16} className="text-green-500" /> : <Copy size={16} />}
             {copied ? 'Copied!' : 'Copy'}
           </button>
-          <button onClick={handleDownload} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'var(--gradient-primary)', color: 'white', padding: '0.5rem 1rem', borderRadius: '8px' }}>
+          <button onClick={handleDownload} className="flex items-center gap-2 bg-accentPrimary hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors shadow-md">
             <Download size={16} />
             Download
           </button>
         </div>
       </div>
 
-      <div className="glass-panel" style={{ flex: 1, padding: '2rem', overflowY: 'auto', background: 'var(--panel-bg)' }}>
+      <div className="glass-panel flex-1 p-8 overflow-y-auto">
         {activeTab === 'preview' ? (
-          <div className="markdown-body" style={{ color: 'var(--text-primary)' }}>
+          <div className="markdown-body prose prose-invert max-w-none text-textPrimary">
             <ReactMarkdown rehypePlugins={[rehypeRaw]}>{markdown}</ReactMarkdown>
           </div>
         ) : (
-          <pre style={{ whiteSpace: 'pre-wrap', fontFamily: 'monospace', color: 'var(--text-secondary)', margin: 0 }}>
+          <pre className="whitespace-pre-wrap font-mono text-sm text-textSecondary m-0">
             {markdown}
           </pre>
         )}
