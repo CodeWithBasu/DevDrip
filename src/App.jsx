@@ -70,13 +70,17 @@ function App() {
   const markdown = generateMarkdown(state);
 
   return (
-    <div data-theme={theme} style={{ display: 'flex', height: '100vh', flexDirection: 'column' }}>
+    <div data-theme={theme} className="flex flex-col h-screen font-sans">
       
       {/* Navbar */}
-      <nav style={{ padding: '1rem 2rem', borderBottom: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} className="glass-panel">
-        <h2>ProfileForge</h2>
+      <nav className="glass-panel flex justify-between items-center px-8 py-4 border-b border-borderMain rounded-none">
+        <h2 className="text-2xl font-bold font-display tracking-tight text-textPrimary">ProfileForge</h2>
         <div>
-          <select value={theme} onChange={(e) => setTheme(e.target.value)} style={{ width: 'auto', marginBottom: 0 }}>
+          <select 
+            value={theme} 
+            onChange={(e) => setTheme(e.target.value)} 
+            className="bg-bgPrimary border border-borderMain text-textPrimary px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-accentPrimary transition-all cursor-pointer"
+          >
             <option value="dark">Cyberpunk / Dark</option>
             <option value="minimalist">Minimalist</option>
             <option value="glassmorphism">Glassmorphism</option>
@@ -85,10 +89,10 @@ function App() {
       </nav>
 
       {/* Main Content */}
-      <main style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
+      <main className="flex flex-1 overflow-hidden">
         
         {/* Editor Pane */}
-        <section style={{ flex: 1, overflowY: 'auto', padding: '2rem', borderRight: '1px solid var(--border-color)' }}>
+        <section className="flex-1 overflow-y-auto p-8 border-r border-borderMain custom-scrollbar">
           <Editor 
             state={state} 
             onChange={handleStateChange}
@@ -98,7 +102,7 @@ function App() {
         </section>
 
         {/* Preview Pane */}
-        <section style={{ flex: 1, overflowY: 'auto', padding: '2rem', background: 'var(--panel-bg)' }}>
+        <section className="flex-1 overflow-y-auto p-8 bg-panelBg custom-scrollbar">
           <Preview markdown={markdown} />
         </section>
 
