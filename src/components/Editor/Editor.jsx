@@ -9,11 +9,11 @@ const Accordion = ({ title, defaultOpen, children }) => {
         className="p-4 flex items-center cursor-pointer hover:bg-black/10 transition-colors"
         onClick={() => setIsOpen(!isOpen)}
       >
-        {isOpen ? <ChevronDown size={20} className="text-textPrimary" /> : <ChevronRight size={20} className="text-textPrimary" />}
-        <h3 className="ml-2 m-0 text-lg font-semibold text-textPrimary">{title}</h3>
+        {isOpen ? <ChevronDown size={20} className="text-text-primary" /> : <ChevronRight size={20} className="text-text-primary" />}
+        <h3 className="ml-2 m-0 text-lg font-semibold text-text-primary">{title}</h3>
       </div>
       {isOpen && (
-        <div className="p-4 animate-fade-in border-t border-borderMain">
+        <div className="p-4 animate-fade-in border-t border-border-main">
           {children}
         </div>
       )}
@@ -22,7 +22,7 @@ const Accordion = ({ title, defaultOpen, children }) => {
 };
 
 const InputLabel = ({ children }) => (
-  <label className="block text-sm font-medium text-textSecondary mb-1 mt-3 first:mt-0">{children}</label>
+  <label className="block text-sm font-medium text-text-secondary mb-1 mt-3 first:mt-0">{children}</label>
 );
 
 const Editor = ({ state, onChange, onAddTech, onRemoveTech }) => {
@@ -35,10 +35,10 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech }) => {
     }
   };
 
-  const inputClass = "w-full p-3 rounded-lg bg-black/20 border border-borderMain text-textPrimary placeholder-textSecondary focus:outline-none focus:ring-2 focus:ring-accentPrimary transition-all";
+  const inputClass = "w-full p-3 rounded-lg bg-black/20 border border-border-main text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-accent-primary transition-all";
 
   return (
-    <div className="text-textPrimary">
+    <div className="text-text-primary">
       <h2 className="text-2xl font-bold mb-6 font-display">Customize Profile</h2>
 
       <Accordion title="Introduction" defaultOpen={true}>
@@ -109,7 +109,7 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech }) => {
           {state.tech.map(t => (
             <div key={t.name} className="inline-flex items-center bg-white/10 px-3 py-1.5 rounded-md">
               <span className="text-sm font-medium">{t.name}</span>
-              <Trash2 size={16} className="ml-2 cursor-pointer text-accentPrimary hover:text-red-400 transition-colors" onClick={() => onRemoveTech(t.name)} />
+              <Trash2 size={16} className="ml-2 cursor-pointer text-accent-primary hover:text-red-400 transition-colors" onClick={() => onRemoveTech(t.name)} />
             </div>
           ))}
         </div>
@@ -118,11 +118,11 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech }) => {
           <input type="text" placeholder="Name (e.g. React)" className={inputClass} value={newTech.name} onChange={e => setNewTech({...newTech, name: e.target.value})} />
           <input type="text" placeholder="Hex (e.g. 20232A)" className={inputClass} value={newTech.color} onChange={e => setNewTech({...newTech, color: e.target.value})} />
           <input type="text" placeholder="Logo slug" className={inputClass} value={newTech.logo} onChange={e => setNewTech({...newTech, logo: e.target.value})} />
-          <button onClick={handleAddTech} className="bg-accentPrimary hover:bg-blue-600 text-white p-3 rounded-lg transition-colors flex-shrink-0">
+          <button onClick={handleAddTech} className="bg-accent-primary hover:bg-blue-600 text-white p-3 rounded-lg transition-colors flex-shrink-0">
             <Plus size={20} />
           </button>
         </div>
-        <p className="text-xs text-textSecondary">Use Simple-Icons slugs (e.g., javascript, react, python)</p>
+        <p className="text-xs text-text-secondary">Use Simple-Icons slugs (e.g., javascript, react, python)</p>
       </Accordion>
 
       <Accordion title="GitHub Stats" defaultOpen={false}>
@@ -137,7 +137,7 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech }) => {
         <div className="flex items-center gap-2 mb-4 mt-2">
           <input 
             type="checkbox" 
-            className="w-4 h-4 rounded bg-black/20 border-borderMain text-accentPrimary focus:ring-accentPrimary"
+            className="w-4 h-4 rounded bg-black/20 border-border-main text-accent-primary focus:ring-accent-primary"
             checked={state.stats.showStats} 
             onChange={(e) => onChange('stats', 'showStats', e.target.checked)} 
           />
@@ -188,7 +188,7 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech }) => {
           value={state.blog.rssUrl} 
           onChange={(e) => onChange('blog', 'rssUrl', e.target.value)} 
         />
-        <p className="text-xs text-textSecondary mt-2">Adds the GitHub Action tags for dynamic blog posts</p>
+        <p className="text-xs text-text-secondary mt-2">Adds the GitHub Action tags for dynamic blog posts</p>
       </Accordion>
 
     </div>

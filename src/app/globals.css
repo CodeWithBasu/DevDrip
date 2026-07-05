@@ -2,12 +2,12 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-bgPrimary: var(--bg-color);
-  --color-panelBg: var(--panel-bg);
-  --color-borderMain: var(--border-color);
-  --color-textPrimary: var(--text-primary);
-  --color-textSecondary: var(--text-secondary);
-  --color-accentPrimary: var(--accent-primary);
+  --color-bg-primary: var(--bg-color);
+  --color-panel-bg: var(--panel-bg);
+  --color-border-main: var(--border-color);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-accent-primary: var(--accent-primary);
 }
 
 @layer base {

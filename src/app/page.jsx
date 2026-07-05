@@ -72,16 +72,16 @@ export default function Page() {
   const markdown = generateMarkdown(state);
 
   return (
-    <div data-theme={theme} className="flex flex-col h-screen font-sans bg-bgPrimary text-textPrimary transition-colors duration-300">
+    <div data-theme={theme} className="flex flex-col h-screen font-sans bg-bg-primary text-text-primary transition-colors duration-300">
       
       {/* Navbar */}
-      <nav className="glass-panel flex justify-between items-center px-8 py-4 border-b border-borderMain rounded-none">
-        <h2 className="text-2xl font-bold font-display tracking-tight text-textPrimary">ProfileForge</h2>
+      <nav className="glass-panel flex justify-between items-center px-8 py-4 border-b border-border-main rounded-none">
+        <h2 className="text-2xl font-bold font-display tracking-tight text-text-primary">ProfileForge</h2>
         <div>
           <select 
             value={theme} 
             onChange={(e) => setTheme(e.target.value)} 
-            className="bg-bgPrimary border border-borderMain text-textPrimary px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-accentPrimary transition-all cursor-pointer"
+            className="bg-bg-primary border border-border-main text-text-primary px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-primary transition-all cursor-pointer"
           >
             <option value="dark">Cyberpunk / Dark</option>
             <option value="minimalist">Minimalist</option>
@@ -94,7 +94,7 @@ export default function Page() {
       <main className="flex flex-1 overflow-hidden">
         
         {/* Editor Pane */}
-        <section className="flex-1 overflow-y-auto p-8 border-r border-borderMain custom-scrollbar">
+        <section className="flex-1 overflow-y-auto p-8 border-r border-border-main custom-scrollbar">
           <Editor 
             state={state} 
             onChange={handleStateChange}
@@ -104,7 +104,7 @@ export default function Page() {
         </section>
 
         {/* Preview Pane */}
-        <section className="flex-1 overflow-y-auto p-8 bg-panelBg custom-scrollbar">
+        <section className="flex-1 overflow-y-auto p-8 bg-panel-bg custom-scrollbar">
           <Preview markdown={markdown} theme={theme} />
         </section>
 
