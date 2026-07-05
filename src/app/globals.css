@@ -1,15 +1,22 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-@theme {
-  --color-bg-primary: var(--bg-color);
-  --color-panel-bg: var(--panel-bg);
-  --color-border-main: var(--border-color);
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-accent-primary: var(--accent-primary);
-  --color-input-bg: var(--input-bg);
-  --color-hover-bg: var(--hover-bg);
+@layer utilities {
+  .bg-bg-primary { background-color: var(--bg-color); }
+  .bg-panel-bg { background-color: var(--panel-bg); }
+  .bg-input-bg { background-color: var(--input-bg); }
+  .hover\:bg-hover-bg:hover { background-color: var(--hover-bg); }
+  .text-text-primary { color: var(--text-primary); }
+  .text-text-secondary { color: var(--text-secondary); }
+  .text-accent-primary { color: var(--accent-primary); }
+  .bg-accent-primary { background-color: var(--accent-primary); }
+  .border-border-main { border-color: var(--border-color); }
+  .placeholder-text-secondary::placeholder { color: var(--text-secondary); }
+  
+  .focus\:ring-accent-primary:focus { 
+    --tw-ring-color: var(--accent-primary); 
+    box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  }
 }
 
 @layer base {
