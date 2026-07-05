@@ -6,7 +6,7 @@ const Accordion = ({ title, defaultOpen, children }) => {
   return (
     <div className="glass-panel mb-4 overflow-hidden">
       <div 
-        className="p-4 flex items-center cursor-pointer hover:bg-black/10 transition-colors"
+        className="p-4 flex items-center cursor-pointer hover:bg-hover-bg transition-colors"
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? <ChevronDown size={20} className="text-text-primary" /> : <ChevronRight size={20} className="text-text-primary" />}
@@ -35,7 +35,7 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech }) => {
     }
   };
 
-  const inputClass = "w-full p-3 rounded-lg bg-black/20 border border-border-main text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-accent-primary transition-all";
+  const inputClass = "w-full p-3 rounded-lg bg-input-bg border border-border-main text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-accent-primary transition-all";
 
   return (
     <div className="text-text-primary">
@@ -107,7 +107,7 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech }) => {
       <Accordion title="Tech Stack" defaultOpen={false}>
         <div className="mb-4 flex flex-wrap gap-2">
           {state.tech.map(t => (
-            <div key={t.name} className="inline-flex items-center bg-white/10 px-3 py-1.5 rounded-md">
+            <div key={t.name} className="inline-flex items-center bg-input-bg px-3 py-1.5 rounded-md">
               <span className="text-sm font-medium">{t.name}</span>
               <Trash2 size={16} className="ml-2 cursor-pointer text-accent-primary hover:text-red-400 transition-colors" onClick={() => onRemoveTech(t.name)} />
             </div>
@@ -137,7 +137,7 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech }) => {
         <div className="flex items-center gap-2 mb-4 mt-2">
           <input 
             type="checkbox" 
-            className="w-4 h-4 rounded bg-black/20 border-border-main text-accent-primary focus:ring-accent-primary"
+            className="w-4 h-4 rounded bg-input-bg border-border-main text-accent-primary focus:ring-accent-primary"
             checked={state.stats.showStats} 
             onChange={(e) => onChange('stats', 'showStats', e.target.checked)} 
           />

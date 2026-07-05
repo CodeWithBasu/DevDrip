@@ -31,20 +31,20 @@ const Preview = ({ markdown, theme }) => {
         <div className="flex gap-4">
           <button 
             onClick={() => setActiveTab('preview')}
-            className={`px-4 py-2 rounded-lg font-bold transition-colors ${activeTab === 'preview' ? 'bg-accent-primary text-white' : 'text-text-secondary hover:bg-black/10'}`}
+            className={`px-4 py-2 rounded-lg font-bold transition-colors ${activeTab === 'preview' ? 'bg-accent-primary text-white' : 'text-text-secondary hover:bg-hover-bg'}`}
           >
             Preview
           </button>
           <button 
             onClick={() => setActiveTab('code')}
-            className={`px-4 py-2 rounded-lg font-bold transition-colors ${activeTab === 'code' ? 'bg-accent-primary text-white' : 'text-text-secondary hover:bg-black/10'}`}
+            className={`px-4 py-2 rounded-lg font-bold transition-colors ${activeTab === 'code' ? 'bg-accent-primary text-white' : 'text-text-secondary hover:bg-hover-bg'}`}
           >
             Raw Code
           </button>
         </div>
         
         <div className="flex gap-2">
-          <button onClick={handleCopy} className="flex items-center gap-2 bg-panel-bg text-text-primary px-4 py-2 rounded-lg border border-border-main hover:bg-black/20 transition-colors">
+          <button onClick={handleCopy} className="flex items-center gap-2 bg-panel-bg text-text-primary px-4 py-2 rounded-lg border border-border-main hover:bg-hover-bg transition-colors">
             {copied ? <CheckCircle2 size={16} className="text-green-500" /> : <Copy size={16} />}
             {copied ? 'Copied!' : 'Copy'}
           </button>
