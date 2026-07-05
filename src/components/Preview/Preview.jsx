@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import { Copy, Download, CheckCircle2 } from 'lucide-react';
 
-const Preview = ({ markdown }) => {
+const Preview = ({ markdown, theme }) => {
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState('preview'); // 'preview' or 'code'
 
@@ -57,7 +57,7 @@ const Preview = ({ markdown }) => {
 
       <div className="glass-panel flex-1 p-8 overflow-y-auto">
         {activeTab === 'preview' ? (
-          <div className="markdown-body prose prose-invert max-w-none text-textPrimary">
+          <div className={`markdown-body prose max-w-none text-textPrimary ${theme !== 'minimalist' ? 'prose-invert' : ''}`}>
             <ReactMarkdown rehypePlugins={[rehypeRaw]}>{markdown}</ReactMarkdown>
           </div>
         ) : (

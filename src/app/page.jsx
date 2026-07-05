@@ -72,7 +72,7 @@ export default function Page() {
   const markdown = generateMarkdown(state);
 
   return (
-    <div data-theme={theme} className="flex flex-col h-screen font-sans">
+    <div data-theme={theme} className="flex flex-col h-screen font-sans bg-bgPrimary text-textPrimary transition-colors duration-300">
       
       {/* Navbar */}
       <nav className="glass-panel flex justify-between items-center px-8 py-4 border-b border-borderMain rounded-none">
@@ -105,7 +105,7 @@ export default function Page() {
 
         {/* Preview Pane */}
         <section className="flex-1 overflow-y-auto p-8 bg-panelBg custom-scrollbar">
-          <Preview markdown={markdown} />
+          <Preview markdown={markdown} theme={theme} />
         </section>
 
       </main>

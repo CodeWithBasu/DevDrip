@@ -37,6 +37,7 @@
       --tw-drop-shadow-color: initial;
       --tw-drop-shadow-alpha: 100%;
       --tw-drop-shadow-size: initial;
+      --tw-duration: initial;
     }
   }
 }
@@ -344,11 +345,11 @@
   }
 
   :root {
-    --bg-color: #0f172a;
-    --panel-bg: #1e293bb3;
+    --bg-color: #000;
+    --panel-bg: #0f0f0fb3;
     --border-color: #ffffff1a;
     --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
+    --text-secondary: #a1a1aa;
     --accent-primary: #3b82f6;
   }
 
@@ -1200,6 +1201,11 @@
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
 
+  .duration-300 {
+    --tw-duration: .3s;
+    transition-duration: .3s;
+  }
+
   .prose-invert {
     --tw-prose-body: var(--tw-prose-invert-body);
     --tw-prose-headings: var(--tw-prose-invert-headings);
@@ -1467,6 +1473,11 @@
 }
 
 @property --tw-drop-shadow-size {
+  syntax: "*";
+  inherits: false
+}
+
+@property --tw-duration {
   syntax: "*";
   inherits: false
 }
