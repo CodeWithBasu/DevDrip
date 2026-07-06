@@ -31,7 +31,8 @@ export default function Page() {
       showBorder: true,
       lifetimeCommits: false,
       privateCommits: false,
-      theme: 'radical'
+      theme: 'radical',
+      customHostUrl: ''
     },
     socials: {
       github: 'janedoe',

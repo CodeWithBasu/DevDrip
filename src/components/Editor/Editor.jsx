@@ -197,6 +197,18 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech }) => {
         </div>
         
         <div className="mt-4">
+          <InputLabel>Custom Vercel Instance URL (Advanced)</InputLabel>
+          <input 
+            type="text" 
+            className={inputClass}
+            value={state.stats?.customHostUrl || ''} 
+            onChange={(e) => onChange('stats', 'customHostUrl', e.target.value)} 
+            placeholder="e.g. https://my-stats.vercel.app"
+          />
+          <p className="text-xs text-text-secondary mt-1">If you have deployed your own github-readme-stats instance to bypass rate limits.</p>
+        </div>
+        
+        <div className="mt-4">
           <InputLabel>Stats Theme</InputLabel>
           <select className={inputClass} value={state.stats?.theme || 'radical'} onChange={(e) => onChange('stats', 'theme', e.target.value)}>
             <option className="bg-bg-primary text-text-primary" value="radical">Radical</option>

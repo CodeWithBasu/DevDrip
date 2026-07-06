@@ -46,12 +46,14 @@ export const generateMarkdown = (state) => {
     const hideBorder = state.stats.showBorder === false ? '&hide_border=true' : '';
     const lifetime = state.stats.lifetimeCommits ? '&include_all_commits=true' : '';
     const privateCommits = state.stats.privateCommits ? '&count_private=true' : '';
+    const statsHost = state.stats.customHostUrl ? state.stats.customHostUrl.replace(/\/$/, '') : 'https://github-readme-stats.vercel.app';
     
     if (state.stats.showStats !== false) { // defaulting to true if undefined
-      md += `  <img src="https://github-readme-stats.vercel.app/api?username=${state.githubUsername}&show_icons=true&theme=${theme}${hideBorder}${lifetime}${privateCommits}" alt="GitHub Stats" />\n`;
+      md += `  <img src="${statsHost}/api?username=${state.githubUsername}&show_icons=true&theme=${theme}${hideBorder}${lifetime}${privateCommits}" alt="GitHub Stats" />\n`;
     }
     
     if (state.stats.showStreak !== false) {
+      // Streak stats is a separate project, usually hosted on Heroku or a separate Vercel deployment
       md += `  <img src="https://github-readme-streak-stats.herokuapp.com/?user=${state.githubUsername}&theme=${theme}${hideBorder}" alt="GitHub Streak Stats" />\n`;
     }
     
@@ -59,7 +61,7 @@ export const generateMarkdown = (state) => {
     
     if (state.stats.showTopLangs !== false) {
       md += `<p align="center">\n`;
-      md += `  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=${state.githubUsername}&theme=${theme}${hideBorder}&layout=compact" alt="Top Languages" />\n`;
+      md += `  <img src="${statsHost}/api/top-langs/?username=${state.githubUsername}&theme=${theme}${hideBorder}&layout=compact" alt="Top Languages" />\n`;
       md += `</p>\n\n`;
     }
   }
