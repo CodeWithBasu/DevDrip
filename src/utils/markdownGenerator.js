@@ -52,7 +52,7 @@ export const generateMarkdown = (state) => {
     
     const socialConfig = [
       { id: 'github', name: 'GitHub', color: '181717', logo: 'github', prefix: 'https://github.com/' },
-      { id: 'twitter', name: 'Twitter', color: '1DA1F2', logo: 'twitter', prefix: 'https://twitter.com/' },
+      { id: 'twitter', name: 'Twitter', color: '000000', logo: 'x', prefix: 'https://twitter.com/' },
       { id: 'devto', name: 'Dev.to', color: '0A0A0A', logo: 'devdotto', prefix: 'https://dev.to/' },
       { id: 'codepen', name: 'CodePen', color: '000000', logo: 'codepen', prefix: 'https://codepen.io/' },
       { id: 'codesandbox', name: 'CodeSandbox', color: '151515', logo: 'codesandbox', prefix: 'https://codesandbox.io/u/' },

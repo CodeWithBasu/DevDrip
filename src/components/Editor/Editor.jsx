@@ -158,7 +158,7 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[
             { id: 'github', label: 'GitHub Username', logo: 'github', color: '181717' },
-            { id: 'twitter', label: 'Twitter Username', logo: 'twitter', color: '1DA1F2' },
+            { id: 'twitter', label: 'Twitter Username', logo: 'x', color: '000000' },
             { id: 'devto', label: 'Dev.to Username', logo: 'devdotto', color: '0A0A0A' },
             { id: 'codepen', label: 'CodePen Username', logo: 'codepen', color: '000000' },
             { id: 'codesandbox', label: 'CodeSandbox Username', logo: 'codesandbox', color: '151515' },
