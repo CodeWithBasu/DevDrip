@@ -199,11 +199,11 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech }) => {
         <div className="mt-4">
           <InputLabel>Stats Theme</InputLabel>
           <select className={inputClass} value={state.stats?.theme || 'radical'} onChange={(e) => onChange('stats', 'theme', e.target.value)}>
-            <option value="radical">Radical</option>
-            <option value="dracula">Dracula</option>
-            <option value="dark">Dark</option>
-            <option value="tokyonight">Tokyo Night</option>
-            <option value="transparent">Transparent</option>
+            <option className="bg-bg-primary text-text-primary" value="radical">Radical</option>
+            <option className="bg-bg-primary text-text-primary" value="dracula">Dracula</option>
+            <option className="bg-bg-primary text-text-primary" value="dark">Dark</option>
+            <option className="bg-bg-primary text-text-primary" value="tokyonight">Tokyo Night</option>
+            <option className="bg-bg-primary text-text-primary" value="transparent">Transparent</option>
           </select>
         </div>
       </Accordion>

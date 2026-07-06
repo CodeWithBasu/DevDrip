@@ -137,9 +137,9 @@ export default function Page() {
             onChange={(e) => setTheme(e.target.value)} 
             className="bg-bg-primary border border-border-main text-text-primary px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-primary transition-all cursor-pointer"
           >
-            <option value="dark">Cyberpunk / Dark</option>
-            <option value="minimalist">Minimalist</option>
-            <option value="glassmorphism">Glassmorphism</option>
+            <option className="bg-bg-primary text-text-primary" value="dark">Cyberpunk / Dark</option>
+            <option className="bg-bg-primary text-text-primary" value="minimalist">Minimalist</option>
+            <option className="bg-bg-primary text-text-primary" value="glassmorphism">Glassmorphism</option>
           </select>
         </div>
       </nav>
