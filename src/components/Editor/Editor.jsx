@@ -202,6 +202,43 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech }) => {
         </div>
       </Accordion>
 
+      <Accordion title="Support" defaultOpen={false}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <div className="flex items-center mb-2 mt-3 first:mt-0">
+              <img 
+                src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" 
+                alt="Buy Me A Coffee" 
+                className="h-10"
+              />
+            </div>
+            <input 
+              type="text" 
+              className={inputClass}
+              value={state.support?.buyMeACoffee || ''} 
+              onChange={(e) => onChange('support', 'buyMeACoffee', e.target.value)} 
+              placeholder="buymeacoffee username"
+            />
+          </div>
+          <div>
+            <div className="flex items-center mb-2 mt-3 first:mt-0">
+              <img 
+                src="https://storage.ko-fi.com/cdn/brandasset/v2/support_me_on_kofi_dark.png" 
+                alt="Ko-fi" 
+                className="h-10"
+              />
+            </div>
+            <input 
+              type="text" 
+              className={inputClass}
+              value={state.support?.kofi || ''} 
+              onChange={(e) => onChange('support', 'kofi', e.target.value)} 
+              placeholder="Ko-fi username"
+            />
+          </div>
+        </div>
+      </Accordion>
+
       <Accordion title="Blog (RSS)" defaultOpen={false}>
         <InputLabel>RSS Feed URL</InputLabel>
         <input 

@@ -55,6 +55,10 @@ export default function Page() {
     },
     blog: {
       rssUrl: 'https://janedoe.dev/rss.xml'
+    },
+    support: {
+      buyMeACoffee: '',
+      kofi: ''
     }
   });
 

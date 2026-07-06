@@ -87,7 +87,19 @@ export const generateMarkdown = (state) => {
     md += `</p>\n\n`;
   }
 
-  // 6. Latest Blog Posts (RSS Feed)
+  // 6. Support
+  if (state.support && (state.support.buyMeACoffee || state.support.kofi)) {
+    md += `## 💖 Support Me\n\n<p align="left">\n`;
+    if (state.support.buyMeACoffee) {
+      md += `  <a href="https://www.buymeacoffee.com/${state.support.buyMeACoffee}"><img src="https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=black" alt="Buy Me A Coffee" /></a>\n`;
+    }
+    if (state.support.kofi) {
+      md += `  <a href="https://ko-fi.com/${state.support.kofi}"><img src="https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=kofi&logoColor=white" alt="Ko-fi" /></a>\n`;
+    }
+    md += `</p>\n\n`;
+  }
+
+  // 7. Latest Blog Posts (RSS Feed)
   if (state.blog && state.blog.rssUrl) {
     md += `## 📝 Latest Blog Posts\n\n`;
     md += `<!-- BLOG-POST-LIST:START -->\n`;
