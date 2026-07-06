@@ -157,32 +157,40 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech }) => {
       <Accordion title="Social Links" defaultOpen={false}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[
-            { id: 'github', label: 'GitHub Username' },
-            { id: 'twitter', label: 'Twitter Username' },
-            { id: 'devto', label: 'Dev.to Username' },
-            { id: 'codepen', label: 'CodePen Username' },
-            { id: 'codesandbox', label: 'CodeSandbox Username' },
-            { id: 'stackoverflow', label: 'StackOverflow User ID' },
-            { id: 'linkedin', label: 'LinkedIn Username' },
-            { id: 'kaggle', label: 'Kaggle Username' },
-            { id: 'facebook', label: 'Facebook Username' },
-            { id: 'instagram', label: 'Instagram Username' },
-            { id: 'dribbble', label: 'Dribbble Username' },
-            { id: 'behance', label: 'Behance Username' },
-            { id: 'hashnode', label: 'Hashnode (with @)' },
-            { id: 'medium', label: 'Medium (with @)' },
-            { id: 'youtube', label: 'YouTube Channel' },
-            { id: 'codechef', label: 'CodeChef Username' },
-            { id: 'hackerrank', label: 'HackerRank Username' },
-            { id: 'codeforces', label: 'Codeforces Username' },
-            { id: 'leetcode', label: 'LeetCode Username' },
-            { id: 'hackerearth', label: 'HackerEarth (with @)' },
-            { id: 'geeksforgeeks', label: 'GFG Profile' },
-            { id: 'discord', label: 'Discord Invite Code' },
-            { id: 'portfolio', label: 'Portfolio URL' }
+            { id: 'github', label: 'GitHub Username', logo: 'github', color: '181717' },
+            { id: 'twitter', label: 'Twitter Username', logo: 'twitter', color: '1DA1F2' },
+            { id: 'devto', label: 'Dev.to Username', logo: 'devdotto', color: '0A0A0A' },
+            { id: 'codepen', label: 'CodePen Username', logo: 'codepen', color: '000000' },
+            { id: 'codesandbox', label: 'CodeSandbox Username', logo: 'codesandbox', color: '151515' },
+            { id: 'stackoverflow', label: 'StackOverflow User ID', logo: 'stackoverflow', color: 'F58025' },
+            { id: 'linkedin', label: 'LinkedIn Username', logo: 'linkedin', color: '0077B5' },
+            { id: 'kaggle', label: 'Kaggle Username', logo: 'kaggle', color: '20BEFF' },
+            { id: 'facebook', label: 'Facebook Username', logo: 'facebook', color: '1877F2' },
+            { id: 'instagram', label: 'Instagram Username', logo: 'instagram', color: 'E4405F' },
+            { id: 'dribbble', label: 'Dribbble Username', logo: 'dribbble', color: 'EA4C89' },
+            { id: 'behance', label: 'Behance Username', logo: 'behance', color: '1769FF' },
+            { id: 'hashnode', label: 'Hashnode (with @)', logo: 'hashnode', color: '2962FF' },
+            { id: 'medium', label: 'Medium (with @)', logo: 'medium', color: '12100E' },
+            { id: 'youtube', label: 'YouTube Channel', logo: 'youtube', color: 'FF0000' },
+            { id: 'codechef', label: 'CodeChef Username', logo: 'codechef', color: '5B4638' },
+            { id: 'hackerrank', label: 'HackerRank Username', logo: 'hackerrank', color: '00EA64' },
+            { id: 'codeforces', label: 'Codeforces Username', logo: 'codeforces', color: '1F8ACB' },
+            { id: 'leetcode', label: 'LeetCode Username', logo: 'leetcode', color: 'FFA116' },
+            { id: 'hackerearth', label: 'HackerEarth (with @)', logo: 'hackerearth', color: '2C3454' },
+            { id: 'geeksforgeeks', label: 'GFG Profile', logo: 'geeksforgeeks', color: '2F8D46' },
+            { id: 'discord', label: 'Discord Invite Code', logo: 'discord', color: '5865F2' },
+            { id: 'portfolio', label: 'Portfolio URL', logo: 'globe', color: '2563EB' }
           ].map(social => (
             <div key={social.id}>
-              <InputLabel>{social.label}</InputLabel>
+              <div className="flex items-center gap-2 mb-1 mt-3 first:mt-0">
+                <img 
+                  src={`https://cdn.simpleicons.org/${social.logo}/${social.color}`} 
+                  alt={social.label} 
+                  className="w-4 h-4 object-contain opacity-80"
+                  onError={(e) => { e.target.style.display = 'none' }}
+                />
+                <label className="block text-sm font-medium text-text-secondary">{social.label}</label>
+              </div>
               <input 
                 type="text" 
                 className={inputClass}
