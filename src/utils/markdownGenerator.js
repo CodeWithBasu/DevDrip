@@ -2,6 +2,10 @@ export const generateMarkdown = (state) => {
   let md = '';
 
   // 1. Header & Title
+  if (state.aesthetics?.topBanner) {
+    md += `<p align="center">\n  <img src="${state.aesthetics.topBanner}" alt="Banner" width="100%" />\n</p>\n\n`;
+  }
+  
   if (state.name) {
     md += `<h1 align="center">Hi 👋, I'm ${state.name}</h1>\n`;
   }
@@ -125,6 +129,20 @@ export const generateMarkdown = (state) => {
     md += `<!-- BLOG-POST-LIST:START -->\n`;
     md += `<!-- You can use github-readme-blog-post-action to auto-update this section -->\n`;
     md += `<!-- BLOG-POST-LIST:END -->\n\n`;
+  }
+
+  // 8. Footer Aesthetics
+  if (state.aesthetics?.bottomGif && state.aesthetics.bottomGif !== 'none') {
+    const gifs = {
+      typingCat: 'https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif',
+      coffeeDev: 'https://media.giphy.com/media/LmNwrBhejkK9EFP504/giphy.gif',
+      matrix: 'https://media.giphy.com/media/3ov9jOJSQhGCcj2D62/giphy.gif',
+      codingAnime: 'https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif'
+    };
+    
+    if (gifs[state.aesthetics.bottomGif]) {
+      md += `<br />\n<p align="center">\n  <img src="${gifs[state.aesthetics.bottomGif]}" alt="Aesthetic" width="300" />\n</p>\n\n`;
+    }
   }
 
   return md;

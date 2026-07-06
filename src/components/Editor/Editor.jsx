@@ -305,6 +305,34 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech }) => {
         </div>
       </Accordion>
 
+      <Accordion title="Aesthetics & GIFs" defaultOpen={false}>
+        <InputLabel>Top Banner Image URL</InputLabel>
+        <input 
+          type="text" 
+          className={inputClass}
+          value={state.aesthetics?.topBanner || ''} 
+          onChange={(e) => onChange('aesthetics', 'topBanner', e.target.value)} 
+          placeholder="e.g. https://example.com/my-banner.png"
+        />
+        <p className="text-xs text-text-secondary mt-1">Displays a wide image at the very top of your README.</p>
+        
+        <div className="mt-4">
+          <InputLabel>Fun Developer GIF</InputLabel>
+          <select 
+            className={inputClass} 
+            value={state.aesthetics?.bottomGif || 'none'} 
+            onChange={(e) => onChange('aesthetics', 'bottomGif', e.target.value)}
+          >
+            <option className="bg-bg-primary text-text-primary" value="none">None</option>
+            <option className="bg-bg-primary text-text-primary" value="typingCat">Typing Cat</option>
+            <option className="bg-bg-primary text-text-primary" value="coffeeDev">Coffee Desk Developer</option>
+            <option className="bg-bg-primary text-text-primary" value="matrix">Matrix Hacker</option>
+            <option className="bg-bg-primary text-text-primary" value="codingAnime">Coding Anime Girl</option>
+          </select>
+          <p className="text-xs text-text-secondary mt-1">Adds a fun animated GIF at the bottom of your profile.</p>
+        </div>
+      </Accordion>
+
       <Accordion title="Blog (RSS)" defaultOpen={false}>
         <InputLabel>RSS Feed URL</InputLabel>
         <input 

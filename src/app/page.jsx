@@ -65,6 +65,10 @@ export default function Page() {
     support: {
       buyMeACoffee: '',
       kofi: ''
+    },
+    aesthetics: {
+      topBanner: '',
+      bottomGif: 'none'
     }
   });
 
