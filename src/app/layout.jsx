@@ -1,7 +1,7 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'ProfileForge',
+  title: 'DevDrip',
   description: 'Generate beautiful GitHub Profile READMEs',
 };
 

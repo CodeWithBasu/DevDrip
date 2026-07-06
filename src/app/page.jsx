@@ -76,7 +76,7 @@ export default function Page() {
       
       {/* Navbar */}
       <nav className="glass-panel flex justify-between items-center px-8 py-4 border-b border-border-main rounded-none">
-        <h2 className="text-2xl font-bold font-display tracking-tight text-text-primary">ProfileForge</h2>
+        <h2 className="text-2xl font-bold font-display tracking-tight text-text-primary">DevDrip</h2>
         <div>
           <select 
             value={theme} 
