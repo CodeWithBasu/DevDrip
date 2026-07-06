@@ -62,6 +62,10 @@ export default function Page() {
     }
   });
 
+  const [editorWidth, setEditorWidth] = useState(50);
+  const [isDragging, setIsDragging] = useState(false);
+  const containerRef = React.useRef(null);
+
   const handleStateChange = (section, field, value) => {
     if (section) {
       setState(prev => ({
@@ -93,6 +97,27 @@ export default function Page() {
     }));
   };
 
+  React.useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (!isDragging || !containerRef.current) return;
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const newWidth = ((e.clientX - containerRect.left) / containerRect.width) * 100;
+      if (newWidth >= 20 && newWidth <= 80) {
+        setEditorWidth(newWidth);
+      }
+    };
+    const handleMouseUp = () => setIsDragging(false);
+
+    if (isDragging) {
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', handleMouseUp);
+    }
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isDragging]);
+
   const markdown = generateMarkdown(state);
 
   return (
@@ -115,10 +140,13 @@ export default function Page() {
       </nav>
 
       {/* Main Content */}
-      <main className="flex flex-1 overflow-hidden">
+      <main ref={containerRef} className="flex flex-1 overflow-hidden" style={{ cursor: isDragging ? 'col-resize' : 'auto' }}>
         
         {/* Editor Pane */}
-        <section className="flex-1 overflow-y-auto p-8 border-r border-border-main custom-scrollbar">
+        <section 
+          className="overflow-y-auto p-8 custom-scrollbar"
+          style={{ width: `${editorWidth}%` }}
+        >
           <Editor 
             state={state} 
             onChange={handleStateChange}
@@ -127,8 +155,17 @@ export default function Page() {
           />
         </section>
 
+        {/* Resizer */}
+        <div 
+          className="w-1.5 bg-border-main hover:bg-accent-primary cursor-col-resize flex-shrink-0 transition-colors z-10 select-none"
+          onMouseDown={(e) => {
+            e.preventDefault();
+            setIsDragging(true);
+          }}
+        />
+
         {/* Preview Pane */}
-        <section className="flex-1 overflow-y-auto p-8 bg-panel-bg backdrop-blur-xl border-l border-border-main custom-scrollbar">
+        <section className="flex-1 overflow-y-auto p-8 bg-panel-bg backdrop-blur-xl custom-scrollbar">
           <Preview markdown={markdown} theme={theme} />
         </section>
 
