@@ -184,7 +184,7 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech }) => {
             <div key={social.id}>
               <div className="flex items-center gap-2 mb-1 mt-3 first:mt-0">
                 <img 
-                  src={`https://cdn.simpleicons.org/${social.logo}/${social.color}`} 
+                  src={['linkedin', 'codepen'].includes(social.logo) ? `/icons/${social.logo}.svg` : `https://cdn.simpleicons.org/${social.logo}/${social.color}`} 
                   alt={social.label} 
                   className="w-4 h-4 object-contain opacity-80 social-logo"
                   onError={(e) => { e.target.style.display = 'none' }}

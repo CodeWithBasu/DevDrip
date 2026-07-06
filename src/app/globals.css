@@ -130,7 +130,8 @@
   .social-logo[src*="0A0A0A"], 
   .social-logo[src*="000000"], 
   .social-logo[src*="151515"], 
-  .social-logo[src*="12100E"] {
+  .social-logo[src*="12100E"],
+  .social-logo[src*="codepen.svg"] {
     filter: invert(1) brightness(2);
   }
 
