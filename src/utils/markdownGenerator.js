@@ -49,15 +49,41 @@ export const generateMarkdown = (state) => {
   // 5. Social Links
   if (state.socials && Object.values(state.socials).some(val => val !== '')) {
     md += `## 🌐 Connect with me\n\n<p align="left">\n`;
-    if (state.socials.twitter) {
-      md += `  <a href="https://twitter.com/${state.socials.twitter}"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter" /></a>\n`;
-    }
-    if (state.socials.linkedin) {
-      md += `  <a href="https://linkedin.com/in/${state.socials.linkedin}"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>\n`;
-    }
-    if (state.socials.portfolio) {
-      md += `  <a href="${state.socials.portfolio}"><img src="https://img.shields.io/badge/Portfolio-2563EB?style=for-the-badge&logo=globe&logoColor=white" alt="Portfolio" /></a>\n`;
-    }
+    
+    const socialConfig = [
+      { id: 'github', name: 'GitHub', color: '181717', logo: 'github', prefix: 'https://github.com/' },
+      { id: 'twitter', name: 'Twitter', color: '1DA1F2', logo: 'twitter', prefix: 'https://twitter.com/' },
+      { id: 'devto', name: 'Dev.to', color: '0A0A0A', logo: 'devdotto', prefix: 'https://dev.to/' },
+      { id: 'codepen', name: 'CodePen', color: '000000', logo: 'codepen', prefix: 'https://codepen.io/' },
+      { id: 'codesandbox', name: 'CodeSandbox', color: '151515', logo: 'codesandbox', prefix: 'https://codesandbox.io/u/' },
+      { id: 'stackoverflow', name: 'StackOverflow', color: 'F58025', logo: 'stackoverflow', prefix: 'https://stackoverflow.com/users/' },
+      { id: 'linkedin', name: 'LinkedIn', color: '0077B5', logo: 'linkedin', prefix: 'https://linkedin.com/in/' },
+      { id: 'kaggle', name: 'Kaggle', color: '20BEFF', logo: 'kaggle', prefix: 'https://kaggle.com/' },
+      { id: 'facebook', name: 'Facebook', color: '1877F2', logo: 'facebook', prefix: 'https://facebook.com/' },
+      { id: 'instagram', name: 'Instagram', color: 'E4405F', logo: 'instagram', prefix: 'https://instagram.com/' },
+      { id: 'dribbble', name: 'Dribbble', color: 'EA4C89', logo: 'dribbble', prefix: 'https://dribbble.com/' },
+      { id: 'behance', name: 'Behance', color: '1769FF', logo: 'behance', prefix: 'https://behance.net/' },
+      { id: 'hashnode', name: 'Hashnode', color: '2962FF', logo: 'hashnode', prefix: 'https://hashnode.com/' },
+      { id: 'medium', name: 'Medium', color: '12100E', logo: 'medium', prefix: 'https://medium.com/' },
+      { id: 'youtube', name: 'YouTube', color: 'FF0000', logo: 'youtube', prefix: 'https://youtube.com/c/' },
+      { id: 'codechef', name: 'CodeChef', color: '5B4638', logo: 'codechef', prefix: 'https://codechef.com/users/' },
+      { id: 'hackerrank', name: 'HackerRank', color: '00EA64', logo: 'hackerrank', prefix: 'https://hackerrank.com/' },
+      { id: 'codeforces', name: 'Codeforces', color: '1F8ACB', logo: 'codeforces', prefix: 'https://codeforces.com/profile/' },
+      { id: 'leetcode', name: 'LeetCode', color: 'FFA116', logo: 'leetcode', prefix: 'https://leetcode.com/' },
+      { id: 'hackerearth', name: 'HackerEarth', color: '2C3454', logo: 'hackerearth', prefix: 'https://hackerearth.com/' },
+      { id: 'geeksforgeeks', name: 'GeeksforGeeks', color: '2F8D46', logo: 'geeksforgeeks', prefix: 'https://auth.geeksforgeeks.org/user/' },
+      { id: 'discord', name: 'Discord', color: '5865F2', logo: 'discord', prefix: 'https://discord.gg/' },
+      { id: 'portfolio', name: 'Portfolio', color: '2563EB', logo: 'globe', prefix: '' }
+    ];
+
+    socialConfig.forEach(social => {
+      const value = state.socials[social.id];
+      if (value) {
+        const url = social.prefix ? `${social.prefix}${value}` : value;
+        md += `  <a href="${url}"><img src="https://img.shields.io/badge/${social.name.replace('.','%2E')}-${social.color}?style=for-the-badge&logo=${social.logo}&logoColor=white" alt="${social.name}" /></a>\n`;
+      }
+    });
+
     md += `</p>\n\n`;
   }
 

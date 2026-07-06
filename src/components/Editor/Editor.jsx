@@ -155,29 +155,43 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech }) => {
       </Accordion>
 
       <Accordion title="Social Links" defaultOpen={false}>
-        <InputLabel>Twitter Username</InputLabel>
-        <input 
-          type="text" 
-          className={inputClass}
-          value={state.socials.twitter} 
-          onChange={(e) => onChange('socials', 'twitter', e.target.value)} 
-        />
-        
-        <InputLabel>LinkedIn Username</InputLabel>
-        <input 
-          type="text" 
-          className={inputClass}
-          value={state.socials.linkedin} 
-          onChange={(e) => onChange('socials', 'linkedin', e.target.value)} 
-        />
-        
-        <InputLabel>Portfolio URL</InputLabel>
-        <input 
-          type="text" 
-          className={inputClass}
-          value={state.socials.portfolio} 
-          onChange={(e) => onChange('socials', 'portfolio', e.target.value)} 
-        />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {[
+            { id: 'github', label: 'GitHub Username' },
+            { id: 'twitter', label: 'Twitter Username' },
+            { id: 'devto', label: 'Dev.to Username' },
+            { id: 'codepen', label: 'CodePen Username' },
+            { id: 'codesandbox', label: 'CodeSandbox Username' },
+            { id: 'stackoverflow', label: 'StackOverflow User ID' },
+            { id: 'linkedin', label: 'LinkedIn Username' },
+            { id: 'kaggle', label: 'Kaggle Username' },
+            { id: 'facebook', label: 'Facebook Username' },
+            { id: 'instagram', label: 'Instagram Username' },
+            { id: 'dribbble', label: 'Dribbble Username' },
+            { id: 'behance', label: 'Behance Username' },
+            { id: 'hashnode', label: 'Hashnode (with @)' },
+            { id: 'medium', label: 'Medium (with @)' },
+            { id: 'youtube', label: 'YouTube Channel' },
+            { id: 'codechef', label: 'CodeChef Username' },
+            { id: 'hackerrank', label: 'HackerRank Username' },
+            { id: 'codeforces', label: 'Codeforces Username' },
+            { id: 'leetcode', label: 'LeetCode Username' },
+            { id: 'hackerearth', label: 'HackerEarth (with @)' },
+            { id: 'geeksforgeeks', label: 'GFG Profile' },
+            { id: 'discord', label: 'Discord Invite Code' },
+            { id: 'portfolio', label: 'Portfolio URL' }
+          ].map(social => (
+            <div key={social.id}>
+              <InputLabel>{social.label}</InputLabel>
+              <input 
+                type="text" 
+                className={inputClass}
+                value={state.socials[social.id]} 
+                onChange={(e) => onChange('socials', social.id, e.target.value)} 
+              />
+            </div>
+          ))}
+        </div>
       </Accordion>
 
       <Accordion title="Blog (RSS)" defaultOpen={false}>

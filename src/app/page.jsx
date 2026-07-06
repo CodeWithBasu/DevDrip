@@ -29,8 +29,28 @@ export default function Page() {
       theme: 'radical'
     },
     socials: {
+      github: 'janedoe',
       twitter: 'janedoe',
+      devto: '',
+      codepen: '',
+      codesandbox: '',
+      stackoverflow: '',
       linkedin: 'janedoe',
+      kaggle: '',
+      facebook: '',
+      instagram: '',
+      dribbble: '',
+      behance: '',
+      hashnode: '',
+      medium: '',
+      youtube: '',
+      codechef: '',
+      hackerrank: '',
+      codeforces: '',
+      leetcode: '',
+      hackerearth: '',
+      geeksforgeeks: '',
+      discord: '',
       portfolio: 'https://janedoe.dev'
     },
     blog: {
