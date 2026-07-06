@@ -186,7 +186,7 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech }) => {
                 <img 
                   src={`https://cdn.simpleicons.org/${social.logo}/${social.color}`} 
                   alt={social.label} 
-                  className="w-4 h-4 object-contain opacity-80"
+                  className="w-4 h-4 object-contain opacity-80 social-logo"
                   onError={(e) => { e.target.style.display = 'none' }}
                 />
                 <label className="block text-sm font-medium text-text-secondary">{social.label}</label>

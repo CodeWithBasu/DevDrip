@@ -124,4 +124,18 @@
     scrollbar-width: thin;
     scrollbar-color: var(--scrollbar-thumb) transparent;
   }
+
+  /* Invert dark logos in default dark themes */
+  .social-logo[src*="181717"], 
+  .social-logo[src*="0A0A0A"], 
+  .social-logo[src*="000000"], 
+  .social-logo[src*="151515"], 
+  .social-logo[src*="12100E"] {
+    filter: invert(1) brightness(2);
+  }
+
+  /* Keep original dark colors in light themes */
+  [data-theme="minimalist"] .social-logo {
+    filter: none !important;
+  }
 }
