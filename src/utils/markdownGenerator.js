@@ -50,7 +50,7 @@ export const generateMarkdown = (state) => {
     const hideBorder = state.stats.showBorder === false ? '&hide_border=true' : '';
     const lifetime = state.stats.lifetimeCommits ? '&include_all_commits=true' : '';
     const privateCommits = state.stats.privateCommits ? '&count_private=true' : '';
-    const statsHost = state.stats.customHostUrl ? state.stats.customHostUrl.replace(/\/$/, '') : 'https://github-readme-stats.vercel.app';
+    const statsHost = state.stats.customHostUrl ? state.stats.customHostUrl.replace(/\/$/, '') : 'https://github-readme-stats-three-sandy-45.vercel.app';
     
     if (state.stats.showStats !== false) { // defaulting to true if undefined
       md += `  <img src="${statsHost}/api?username=${state.githubUsername}&show_icons=true&theme=${theme}${hideBorder}${lifetime}${privateCommits}" alt="GitHub Stats" />\n`;
