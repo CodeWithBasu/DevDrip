@@ -38,12 +38,30 @@ export const generateMarkdown = (state) => {
   }
 
   // 4. GitHub Stats
-  if (state.stats && state.stats.showStats) {
+  if (state.stats && (state.stats.showStats || state.stats.showStreak || state.stats.showTopLangs) && state.githubUsername) {
     md += `## 📊 GitHub Stats\n\n`;
     md += `<p align="center">\n`;
+    
     const theme = state.stats.theme || 'radical';
-    md += `  <img src="https://github-readme-stats.vercel.app/api?username=${state.githubUsername}&show_icons=true&theme=${theme}" alt="GitHub Stats" />\n`;
+    const hideBorder = state.stats.showBorder === false ? '&hide_border=true' : '';
+    const lifetime = state.stats.lifetimeCommits ? '&include_all_commits=true' : '';
+    const privateCommits = state.stats.privateCommits ? '&count_private=true' : '';
+    
+    if (state.stats.showStats !== false) { // defaulting to true if undefined
+      md += `  <img src="https://github-readme-stats.vercel.app/api?username=${state.githubUsername}&show_icons=true&theme=${theme}${hideBorder}${lifetime}${privateCommits}" alt="GitHub Stats" />\n`;
+    }
+    
+    if (state.stats.showStreak !== false) {
+      md += `  <img src="https://github-readme-streak-stats.herokuapp.com/?user=${state.githubUsername}&theme=${theme}${hideBorder}" alt="GitHub Streak Stats" />\n`;
+    }
+    
     md += `</p>\n\n`;
+    
+    if (state.stats.showTopLangs !== false) {
+      md += `<p align="center">\n`;
+      md += `  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=${state.githubUsername}&theme=${theme}${hideBorder}&layout=compact" alt="Top Languages" />\n`;
+      md += `</p>\n\n`;
+    }
   }
 
   // 5. Social Links

@@ -26,6 +26,11 @@ export default function Page() {
     githubUsername: 'janedoe',
     stats: {
       showStats: true,
+      showStreak: true,
+      showTopLangs: true,
+      showBorder: true,
+      lifetimeCommits: false,
+      privateCommits: false,
       theme: 'radical'
     },
     socials: {

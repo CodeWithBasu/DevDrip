@@ -134,24 +134,78 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech }) => {
           onChange={(e) => onChange(null, 'githubUsername', e.target.value)} 
         />
         
-        <div className="flex items-center gap-2 mb-4 mt-2">
-          <input 
-            type="checkbox" 
-            className="w-4 h-4 rounded bg-input-bg border-border-main text-accent-primary focus:ring-accent-primary"
-            checked={state.stats.showStats} 
-            onChange={(e) => onChange('stats', 'showStats', e.target.checked)} 
-          />
-          <span className="text-sm font-medium">Show GitHub Stats Card</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <input 
+                type="checkbox" 
+                className="w-4 h-4 rounded bg-input-bg border-border-main text-accent-primary focus:ring-accent-primary"
+                checked={state.stats?.showStats ?? true} 
+                onChange={(e) => onChange('stats', 'showStats', e.target.checked)} 
+              />
+              <span className="text-sm font-medium">GitHub Stats Card</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <input 
+                type="checkbox" 
+                className="w-4 h-4 rounded bg-input-bg border-border-main text-accent-primary focus:ring-accent-primary"
+                checked={state.stats?.showStreak ?? true} 
+                onChange={(e) => onChange('stats', 'showStreak', e.target.checked)} 
+              />
+              <span className="text-sm font-medium">Streak Stats</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <input 
+                type="checkbox" 
+                className="w-4 h-4 rounded bg-input-bg border-border-main text-accent-primary focus:ring-accent-primary"
+                checked={state.stats?.showTopLangs ?? true} 
+                onChange={(e) => onChange('stats', 'showTopLangs', e.target.checked)} 
+              />
+              <span className="text-sm font-medium">Top Languages</span>
+            </div>
+          </div>
+          
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <input 
+                type="checkbox" 
+                className="w-4 h-4 rounded bg-input-bg border-border-main text-accent-primary focus:ring-accent-primary"
+                checked={state.stats?.showBorder ?? true} 
+                onChange={(e) => onChange('stats', 'showBorder', e.target.checked)} 
+              />
+              <span className="text-sm text-text-secondary">Show Border</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <input 
+                type="checkbox" 
+                className="w-4 h-4 rounded bg-input-bg border-border-main text-accent-primary focus:ring-accent-primary"
+                checked={state.stats?.lifetimeCommits ?? false} 
+                onChange={(e) => onChange('stats', 'lifetimeCommits', e.target.checked)} 
+              />
+              <span className="text-sm text-text-secondary">Lifetime Commits</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <input 
+                type="checkbox" 
+                className="w-4 h-4 rounded bg-input-bg border-border-main text-accent-primary focus:ring-accent-primary"
+                checked={state.stats?.privateCommits ?? false} 
+                onChange={(e) => onChange('stats', 'privateCommits', e.target.checked)} 
+              />
+              <span className="text-sm text-text-secondary">Private Commits</span>
+            </div>
+          </div>
         </div>
         
-        <InputLabel>Stats Theme</InputLabel>
-        <select className={inputClass} value={state.stats.theme} onChange={(e) => onChange('stats', 'theme', e.target.value)}>
-          <option value="radical">Radical</option>
-          <option value="dracula">Dracula</option>
-          <option value="dark">Dark</option>
-          <option value="tokyonight">Tokyo Night</option>
-          <option value="transparent">Transparent</option>
-        </select>
+        <div className="mt-4">
+          <InputLabel>Stats Theme</InputLabel>
+          <select className={inputClass} value={state.stats?.theme || 'radical'} onChange={(e) => onChange('stats', 'theme', e.target.value)}>
+            <option value="radical">Radical</option>
+            <option value="dracula">Dracula</option>
+            <option value="dark">Dark</option>
+            <option value="tokyonight">Tokyo Night</option>
+            <option value="transparent">Transparent</option>
+          </select>
+        </div>
       </Accordion>
 
       <Accordion title="Social Links" defaultOpen={false}>
