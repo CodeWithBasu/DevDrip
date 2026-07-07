@@ -198,7 +198,7 @@ export default function Page() {
 
         {/* Preview Pane */}
         <section className="flex-1 overflow-y-auto p-8 bg-panel-bg backdrop-blur-xl custom-scrollbar">
-          <Preview markdown={markdown} theme={theme} />
+          <Preview markdown={markdown} theme={theme} state={state} />
         </section>
 
       </main>
