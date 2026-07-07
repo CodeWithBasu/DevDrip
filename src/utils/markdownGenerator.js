@@ -48,18 +48,8 @@ export const generateMarkdown = (state) => {
     const theme = state.stats.theme || 'radical';
 
     if (state.stats.showVisitors) {
-      // Map stats theme to futuristic visitor badge colors
-      const badgeColors = {
-        radical: 'ec4899',      // Neon Pink
-        dracula: 'ff79c6',      // Dracula Pink
-        tokyonight: '7aa2f7',   // Neon Blue
-        dark: 'ffffff',         // White
-        transparent: '000000'   // Black
-      };
-      const badgeColor = badgeColors[theme] || '8A2BE2'; // Default to Neon Purple
-
       md += `<p align="center">\n`;
-      md += `  <img src="https://komarev.com/ghpvc/?username=${state.githubUsername}&label=PROFILE+VIEWS&color=${badgeColor}&style=for-the-badge" alt="Profile Views" />\n`;
+      md += `  <img src="https://count.getloli.com/@${state.githubUsername}" alt="${state.githubUsername}" />\n`;
       md += `</p>\n\n`;
     }
 
