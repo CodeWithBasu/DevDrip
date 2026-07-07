@@ -46,7 +46,7 @@ const Onboarding = ({ onComplete }) => {
         {/* Right Column - Illustration */}
         <div className="flex-1 w-full flex justify-center md:justify-end animate-fade-in">
           <img 
-            src="/hero-illustration.png" 
+            src="/hero-illustration-transparent.png" 
             alt="Developer Illustration" 
             className="w-full max-w-[600px] object-contain drop-shadow-2xl"
           />
