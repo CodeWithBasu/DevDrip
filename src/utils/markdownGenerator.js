@@ -49,7 +49,7 @@ export const generateMarkdown = (state) => {
 
     if (state.stats.showVisitors) {
       md += `<p align="center">\n`;
-      md += `  <img src="https://count.getloli.com/@${state.githubUsername}" alt="${state.githubUsername}" />\n`;
+      md += `  <img src="https://count.getloli.com/@${state.githubUsername}?theme=ai-1" alt="${state.githubUsername}" />\n`;
       md += `</p>\n\n`;
     }
 
