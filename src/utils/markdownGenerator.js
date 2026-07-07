@@ -45,9 +45,21 @@ export const generateMarkdown = (state) => {
   if (state.stats && (state.stats.showStats || state.stats.showStreak || state.stats.showTopLangs || state.stats.showVisitors) && state.githubUsername) {
     md += `## 📊 GitHub Stats\n\n`;
     
+    const theme = state.stats.theme || 'radical';
+
     if (state.stats.showVisitors) {
+      // Map stats theme to futuristic visitor badge colors
+      const badgeColors = {
+        radical: 'ec4899',      // Neon Pink
+        dracula: 'ff79c6',      // Dracula Pink
+        tokyonight: '7aa2f7',   // Neon Blue
+        dark: 'ffffff',         // White
+        transparent: '000000'   // Black
+      };
+      const badgeColor = badgeColors[theme] || '8A2BE2'; // Default to Neon Purple
+
       md += `<p align="center">\n`;
-      md += `  <img src="https://komarev.com/ghpvc/?username=${state.githubUsername}&label=Profile%20views&color=0e75b6&style=flat" alt="Profile Views" />\n`;
+      md += `  <img src="https://komarev.com/ghpvc/?username=${state.githubUsername}&label=PROFILE+VIEWS&color=${badgeColor}&style=for-the-badge" alt="Profile Views" />\n`;
       md += `</p>\n\n`;
     }
 
