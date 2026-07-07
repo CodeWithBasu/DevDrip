@@ -64,8 +64,6 @@ export const generateMarkdown = (state) => {
     }
 
     md += `<p align="center">\n`;
-    
-    const theme = state.stats.theme || 'radical';
     const hideBorder = state.stats.showBorder === false ? '&hide_border=true' : '';
     const lifetime = state.stats.lifetimeCommits ? '&include_all_commits=true' : '';
     const privateCommits = state.stats.privateCommits ? '&count_private=true' : '';
