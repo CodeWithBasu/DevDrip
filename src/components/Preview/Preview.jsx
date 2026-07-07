@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import { Copy, Download, CheckCircle2 } from 'lucide-react';
-import WebProfile from '../WebProfile/WebProfile';
 
-const Preview = ({ markdown, theme, state }) => {
+const Preview = ({ markdown, theme }) => {
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState('preview'); // 'preview' or 'code'
 
@@ -42,12 +41,6 @@ const Preview = ({ markdown, theme, state }) => {
           >
             Raw Code
           </button>
-          <button 
-            onClick={() => setActiveTab('web')}
-            className={`px-4 py-2 rounded-lg font-bold transition-colors ${activeTab === 'web' ? 'bg-accent-primary text-white' : 'text-text-secondary hover:bg-hover-bg'}`}
-          >
-            Web Profile
-          </button>
         </div>
         
         <div className="flex gap-2">
@@ -67,12 +60,10 @@ const Preview = ({ markdown, theme, state }) => {
           <div className={`markdown-body prose max-w-none text-text-primary ${theme !== 'minimalist' ? 'prose-invert' : ''}`}>
             <ReactMarkdown rehypePlugins={[rehypeRaw]}>{markdown}</ReactMarkdown>
           </div>
-        ) : activeTab === 'code' ? (
+        ) : (
           <pre className="whitespace-pre-wrap font-mono text-sm text-text-secondary m-0">
             {markdown}
           </pre>
-        ) : (
-          <WebProfile state={state} theme={theme} />
         )}
       </div>
     </div>

@@ -42,8 +42,15 @@ export const generateMarkdown = (state) => {
   }
 
   // 4. GitHub Stats
-  if (state.stats && (state.stats.showStats || state.stats.showStreak || state.stats.showTopLangs) && state.githubUsername) {
+  if (state.stats && (state.stats.showStats || state.stats.showStreak || state.stats.showTopLangs || state.stats.showVisitors) && state.githubUsername) {
     md += `## 📊 GitHub Stats\n\n`;
+    
+    if (state.stats.showVisitors) {
+      md += `<p align="center">\n`;
+      md += `  <img src="https://komarev.com/ghpvc/?username=${state.githubUsername}&label=Profile%20views&color=0e75b6&style=flat" alt="Profile Views" />\n`;
+      md += `</p>\n\n`;
+    }
+
     md += `<p align="center">\n`;
     
     const theme = state.stats.theme || 'radical';

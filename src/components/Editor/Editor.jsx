@@ -163,6 +163,15 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech }) => {
               />
               <span className="text-sm font-medium">Top Languages</span>
             </div>
+            <div className="flex items-center gap-2">
+              <input 
+                type="checkbox" 
+                className="w-4 h-4 rounded bg-input-bg border-border-main text-accent-primary focus:ring-accent-primary"
+                checked={state.stats?.showVisitors ?? false} 
+                onChange={(e) => onChange('stats', 'showVisitors', e.target.checked)} 
+              />
+              <span className="text-sm font-medium">Add Visitors Count</span>
+            </div>
           </div>
           
           <div className="flex flex-col gap-3">

@@ -31,6 +31,7 @@ export default function Page() {
       showStats: true,
       showStreak: true,
       showTopLangs: true,
+      showVisitors: false,
       showBorder: true,
       lifetimeCommits: false,
       privateCommits: false,
@@ -198,7 +199,7 @@ export default function Page() {
 
         {/* Preview Pane */}
         <section className="flex-1 overflow-y-auto p-8 bg-panel-bg backdrop-blur-xl custom-scrollbar">
-          <Preview markdown={markdown} theme={theme} state={state} />
+          <Preview markdown={markdown} theme={theme} />
         </section>
 
       </main>
