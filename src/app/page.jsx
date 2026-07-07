@@ -3,13 +3,16 @@
 import React, { useState } from 'react';
 import Editor from '../components/Editor/Editor';
 import Preview from '../components/Preview/Preview';
+import Onboarding from '../components/Onboarding/Onboarding';
 import { generateMarkdown } from '../utils/markdownGenerator';
 
 export default function Page() {
   const [theme, setTheme] = useState('dark'); // 'dark', 'minimalist', 'glassmorphism'
   
+  const [isOnboarded, setIsOnboarded] = useState(false);
+  
   const [state, setState] = useState({
-    name: 'Jane Doe',
+    name: '',
     title: 'Full Stack Developer',
     catchphrase: 'Building aesthetic web experiences',
     about: {
@@ -23,7 +26,7 @@ export default function Page() {
       { name: 'Next.js', color: '000000', logo: 'nextdotjs' },
       { name: 'JavaScript', color: 'F7DF1E', logo: 'javascript' }
     ],
-    githubUsername: 'janedoe',
+    githubUsername: '',
     stats: {
       showStats: true,
       showStreak: true,
@@ -35,13 +38,13 @@ export default function Page() {
       customHostUrl: ''
     },
     socials: {
-      github: 'janedoe',
-      twitter: 'janedoe',
+      github: '',
+      twitter: '',
       devto: '',
       codepen: '',
       codesandbox: '',
       stackoverflow: '',
-      linkedin: 'janedoe',
+      linkedin: '',
       kaggle: '',
       facebook: '',
       instagram: '',
@@ -130,6 +133,21 @@ export default function Page() {
 
   const markdown = generateMarkdown(state);
 
+  const handleOnboardingComplete = (username) => {
+    setState(prev => ({
+      ...prev,
+      name: username,
+      githubUsername: username,
+      socials: {
+        ...prev.socials,
+        github: username,
+        twitter: username, // Optional: assume twitter is same
+        linkedin: username
+      }
+    }));
+    setIsOnboarded(true);
+  };
+
   return (
     <div data-theme={theme} className="flex flex-col h-screen font-sans bg-bg-primary text-text-primary transition-colors duration-300">
       
@@ -150,8 +168,12 @@ export default function Page() {
       </nav>
 
       {/* Main Content */}
-      <main ref={containerRef} className="flex flex-1 overflow-hidden" style={{ cursor: isDragging ? 'col-resize' : 'auto' }}>
+      <main ref={containerRef} className="flex flex-1 overflow-hidden relative" style={{ cursor: isDragging ? 'col-resize' : 'auto' }}>
         
+        {!isOnboarded && (
+          <Onboarding onComplete={handleOnboardingComplete} />
+        )}
+
         {/* Editor Pane */}
         <section 
           className="overflow-y-auto p-8 custom-scrollbar"
