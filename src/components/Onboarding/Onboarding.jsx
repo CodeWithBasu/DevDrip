@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Github, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const Onboarding = ({ onComplete }) => {
   const [username, setUsername] = useState('');
@@ -24,8 +24,8 @@ const Onboarding = ({ onComplete }) => {
           
           <div className="mb-8 relative">
             <div className="absolute inset-0 bg-accent-primary/20 blur-2xl rounded-full" />
-            <div className="relative bg-panel-bg p-4 rounded-2xl border border-border-main shadow-2xl">
-              <Github size={48} className="text-text-primary" />
+            <div className="relative bg-panel-bg p-4 rounded-2xl border border-border-main shadow-2xl flex items-center justify-center w-20 h-20">
+              <img src="https://cdn.simpleicons.org/github/ffffff" alt="GitHub" className="w-12 h-12" />
             </div>
           </div>
           
