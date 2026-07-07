@@ -1,5 +1,5 @@
 import React from 'react';
-import { Terminal, Code, Cpu, MessageSquare, Coffee, Github, Twitter, Linkedin, Globe, MapPin } from 'lucide-react';
+import { Terminal, Code, Cpu, MessageSquare, Coffee, Globe, MapPin } from 'lucide-react';
 
 const WebProfile = ({ state, theme }) => {
   const { name, title, catchphrase, about, tech, githubUsername, stats, socials } = state;
@@ -57,18 +57,18 @@ const WebProfile = ({ state, theme }) => {
             {/* Socials */}
             <div className="flex flex-wrap gap-4 justify-center md:justify-start pt-4">
               {socials.github && (
-                <a href={`https://github.com/${socials.github}`} target="_blank" rel="noreferrer" className="p-3 rounded-xl bg-panel-bg border border-border-main hover:border-accent-primary transition-all hover:-translate-y-1 group">
-                  <Github className="group-hover:text-accent-primary transition-colors" />
+                <a href={`https://github.com/${socials.github}`} target="_blank" rel="noreferrer" className="p-3 rounded-xl bg-panel-bg border border-border-main hover:border-accent-primary transition-all hover:-translate-y-1 group flex items-center justify-center">
+                  <img src="https://cdn.simpleicons.org/github/ffffff" alt="GitHub" className="w-6 h-6 opacity-70 group-hover:opacity-100 transition-opacity" />
                 </a>
               )}
               {socials.twitter && (
-                <a href={`https://twitter.com/${socials.twitter}`} target="_blank" rel="noreferrer" className="p-3 rounded-xl bg-panel-bg border border-border-main hover:border-accent-primary transition-all hover:-translate-y-1 group">
-                  <Twitter className="group-hover:text-accent-primary transition-colors" />
+                <a href={`https://twitter.com/${socials.twitter}`} target="_blank" rel="noreferrer" className="p-3 rounded-xl bg-panel-bg border border-border-main hover:border-accent-primary transition-all hover:-translate-y-1 group flex items-center justify-center">
+                  <img src="https://cdn.simpleicons.org/twitter/ffffff" alt="Twitter" className="w-6 h-6 opacity-70 group-hover:opacity-100 transition-opacity" />
                 </a>
               )}
               {socials.linkedin && (
-                <a href={`https://linkedin.com/in/${socials.linkedin}`} target="_blank" rel="noreferrer" className="p-3 rounded-xl bg-panel-bg border border-border-main hover:border-accent-primary transition-all hover:-translate-y-1 group">
-                  <Linkedin className="group-hover:text-accent-primary transition-colors" />
+                <a href={`https://linkedin.com/in/${socials.linkedin}`} target="_blank" rel="noreferrer" className="p-3 rounded-xl bg-panel-bg border border-border-main hover:border-accent-primary transition-all hover:-translate-y-1 group flex items-center justify-center">
+                  <img src="https://cdn.simpleicons.org/linkedin/ffffff" alt="LinkedIn" className="w-6 h-6 opacity-70 group-hover:opacity-100 transition-opacity" />
                 </a>
               )}
               {socials.portfolio && (
