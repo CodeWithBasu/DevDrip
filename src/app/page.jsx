@@ -76,9 +76,7 @@ export default function Page() {
     }
   });
 
-  const [editorWidth, setEditorWidth] = useState(50);
-  const [isDragging, setIsDragging] = useState(false);
-  const containerRef = React.useRef(null);
+  const [appState, setAppState] = useState('onboarding'); // 'onboarding', 'editor', 'result'
 
   const handleStateChange = (section, field, value) => {
     if (section) {
@@ -111,27 +109,6 @@ export default function Page() {
     }));
   };
 
-  React.useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (!isDragging || !containerRef.current) return;
-      const containerRect = containerRef.current.getBoundingClientRect();
-      const newWidth = ((e.clientX - containerRect.left) / containerRect.width) * 100;
-      if (newWidth >= 20 && newWidth <= 80) {
-        setEditorWidth(newWidth);
-      }
-    };
-    const handleMouseUp = () => setIsDragging(false);
-
-    if (isDragging) {
-      window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseup', handleMouseUp);
-    }
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
-    };
-  }, [isDragging]);
-
   const markdown = generateMarkdown(state);
 
   const handleOnboardingComplete = (username) => {
@@ -146,15 +123,29 @@ export default function Page() {
         linkedin: username
       }
     }));
-    setIsOnboarded(true);
+    setAppState('editor');
+  };
+
+  const handleGenerate = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setAppState('result');
+  };
+
+  const handleGoBack = () => {
+    setAppState('editor');
   };
 
   return (
-    <div data-theme={theme} className="flex flex-col h-screen font-sans bg-bg-primary text-text-primary transition-colors duration-300">
+    <div data-theme={theme} className="flex flex-col min-h-screen font-sans bg-bg-primary text-text-primary transition-colors duration-300 relative overflow-x-hidden">
       
       {/* Navbar */}
-      <nav className="glass-panel flex justify-between items-center px-8 py-4 border-b border-border-main rounded-none">
-        <h2 className="text-2xl font-bold font-display tracking-tight text-text-primary">DevDrip</h2>
+      <nav className="glass-panel sticky top-0 z-50 flex justify-between items-center px-8 py-4 border-b border-border-main rounded-none backdrop-blur-xl">
+        <h2 
+          className="text-2xl font-bold font-display tracking-tight text-text-primary cursor-pointer hover:text-accent-primary transition-colors" 
+          onClick={() => appState !== 'onboarding' && setAppState('editor')}
+        >
+          DevDrip
+        </h2>
         <div>
           <select 
             value={theme} 
@@ -169,38 +160,44 @@ export default function Page() {
       </nav>
 
       {/* Main Content */}
-      <main ref={containerRef} className="flex flex-1 overflow-hidden relative" style={{ cursor: isDragging ? 'col-resize' : 'auto' }}>
+      <main className="flex-1 flex flex-col relative">
         
-        {!isOnboarded && (
+        {appState === 'onboarding' && (
           <Onboarding onComplete={handleOnboardingComplete} />
         )}
 
-        {/* Editor Pane */}
-        <section 
-          className="overflow-y-auto p-8 custom-scrollbar"
-          style={{ width: `${editorWidth}%` }}
-        >
-          <Editor 
-            state={state} 
-            onChange={handleStateChange}
-            onAddTech={addTech}
-            onRemoveTech={removeTech}
-          />
-        </section>
+        {appState === 'editor' && (
+          <section className="flex-1 w-full max-w-4xl mx-auto p-4 md:p-8 animate-fade-in pb-32">
+            <Editor 
+              state={state} 
+              onChange={handleStateChange}
+              onAddTech={addTech}
+              onRemoveTech={removeTech}
+              onGenerate={handleGenerate}
+            />
+          </section>
+        )}
 
-        {/* Resizer */}
-        <div 
-          className="w-1.5 bg-border-main hover:bg-accent-primary cursor-col-resize flex-shrink-0 transition-colors z-10 select-none"
-          onMouseDown={(e) => {
-            e.preventDefault();
-            setIsDragging(true);
-          }}
-        />
-
-        {/* Preview Pane */}
-        <section className="flex-1 overflow-y-auto p-8 bg-panel-bg backdrop-blur-xl custom-scrollbar">
-          <Preview markdown={markdown} theme={theme} />
-        </section>
+        {appState === 'result' && (
+          <section className="flex-1 w-full max-w-6xl mx-auto p-4 md:p-8 animate-fade-in flex flex-col">
+            <div className="mb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4 shrink-0">
+              <div>
+                <h1 className="text-4xl font-display font-bold mb-2">Your README is ready! ✨</h1>
+                <p className="text-text-secondary">Preview it below or grab the raw code for your repository.</p>
+              </div>
+              <button 
+                onClick={handleGoBack}
+                className="px-6 py-2.5 rounded-lg border border-border-main text-text-secondary hover:text-text-primary hover:border-accent-primary transition-all font-medium flex items-center gap-2 shrink-0"
+              >
+                ← Back to Edit
+              </button>
+            </div>
+            
+            <div className="flex-1 min-h-[600px] mb-8">
+              <Preview markdown={markdown} theme={theme} />
+            </div>
+          </section>
+        )}
 
       </main>
     </div>
