@@ -37,7 +37,7 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech, onGenerate }) => {
           <h2 className="text-4xl font-bold font-display text-text-primary mb-2">{title}</h2>
           <p className="text-text-secondary text-lg">{subtitle}</p>
         </div>
-        <div className="glass-panel p-8">
+        <div className="w-full max-w-3xl mx-auto">
           {children}
         </div>
       </div>
