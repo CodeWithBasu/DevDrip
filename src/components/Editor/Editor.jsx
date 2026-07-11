@@ -18,7 +18,7 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech, onGenerate }) => {
     }
   };
 
-  const inputClass = "w-full p-4 rounded-xl bg-input-bg border border-border-main text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-accent-primary transition-all text-lg";
+  const inputClass = "w-full p-4 rounded-xl bg-input-bg text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-accent-primary transition-all text-lg";
 
   const nextStep = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -120,7 +120,7 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech, onGenerate }) => {
       <StepSection current={step} target={2} title="Tech Arsenal" subtitle="Showcase the languages, frameworks, and tools you use.">
         <div className="mb-8 flex flex-wrap gap-3">
           {state.tech.map(t => (
-            <div key={t.name} className="inline-flex items-center bg-input-bg border border-border-main px-4 py-2 rounded-lg shadow-sm">
+            <div key={t.name} className="inline-flex items-center bg-input-bg px-4 py-2 rounded-lg shadow-sm">
               <span className="text-base font-medium">{t.name}</span>
               <Trash2 size={18} className="ml-3 cursor-pointer text-text-secondary hover:text-red-400 transition-colors" onClick={() => onRemoveTech(t.name)} />
             </div>
@@ -212,12 +212,12 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech, onGenerate }) => {
           placeholder="e.g. CodeWithBasu"
         />
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 p-6 bg-input-bg rounded-xl border border-border-main">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 p-6 bg-input-bg rounded-xl">
           <div className="flex flex-col gap-5">
             <label className="flex items-center gap-3 cursor-pointer group">
               <input 
                 type="checkbox" 
-                className="w-5 h-5 rounded bg-bg-primary border-border-main text-accent-primary focus:ring-accent-primary cursor-pointer"
+                className="w-5 h-5 rounded bg-bg-primary text-accent-primary focus:ring-accent-primary cursor-pointer"
                 checked={state.stats?.showStats ?? true} 
                 onChange={(e) => onChange('stats', 'showStats', e.target.checked)} 
               />
@@ -226,7 +226,7 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech, onGenerate }) => {
             <label className="flex items-center gap-3 cursor-pointer group">
               <input 
                 type="checkbox" 
-                className="w-5 h-5 rounded bg-bg-primary border-border-main text-accent-primary focus:ring-accent-primary cursor-pointer"
+                className="w-5 h-5 rounded bg-bg-primary text-accent-primary focus:ring-accent-primary cursor-pointer"
                 checked={state.stats?.showStreak ?? true} 
                 onChange={(e) => onChange('stats', 'showStreak', e.target.checked)} 
               />
@@ -235,7 +235,7 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech, onGenerate }) => {
             <label className="flex items-center gap-3 cursor-pointer group">
               <input 
                 type="checkbox" 
-                className="w-5 h-5 rounded bg-bg-primary border-border-main text-accent-primary focus:ring-accent-primary cursor-pointer"
+                className="w-5 h-5 rounded bg-bg-primary text-accent-primary focus:ring-accent-primary cursor-pointer"
                 checked={state.stats?.showTopLangs ?? true} 
                 onChange={(e) => onChange('stats', 'showTopLangs', e.target.checked)} 
               />
@@ -244,7 +244,7 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech, onGenerate }) => {
             <label className="flex items-center gap-3 cursor-pointer group">
               <input 
                 type="checkbox" 
-                className="w-5 h-5 rounded bg-bg-primary border-border-main text-accent-primary focus:ring-accent-primary cursor-pointer"
+                className="w-5 h-5 rounded bg-bg-primary text-accent-primary focus:ring-accent-primary cursor-pointer"
                 checked={state.stats?.showVisitors ?? false} 
                 onChange={(e) => onChange('stats', 'showVisitors', e.target.checked)} 
               />
@@ -256,7 +256,7 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech, onGenerate }) => {
             <label className="flex items-center gap-3 cursor-pointer group">
               <input 
                 type="checkbox" 
-                className="w-5 h-5 rounded bg-bg-primary border-border-main text-accent-primary focus:ring-accent-primary cursor-pointer"
+                className="w-5 h-5 rounded bg-bg-primary text-accent-primary focus:ring-accent-primary cursor-pointer"
                 checked={state.stats?.showBorder ?? true} 
                 onChange={(e) => onChange('stats', 'showBorder', e.target.checked)} 
               />
@@ -265,7 +265,7 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech, onGenerate }) => {
             <label className="flex items-center gap-3 cursor-pointer group">
               <input 
                 type="checkbox" 
-                className="w-5 h-5 rounded bg-bg-primary border-border-main text-accent-primary focus:ring-accent-primary cursor-pointer"
+                className="w-5 h-5 rounded bg-bg-primary text-accent-primary focus:ring-accent-primary cursor-pointer"
                 checked={state.stats?.lifetimeCommits ?? false} 
                 onChange={(e) => onChange('stats', 'lifetimeCommits', e.target.checked)} 
               />
@@ -274,7 +274,7 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech, onGenerate }) => {
             <label className="flex items-center gap-3 cursor-pointer group">
               <input 
                 type="checkbox" 
-                className="w-5 h-5 rounded bg-bg-primary border-border-main text-accent-primary focus:ring-accent-primary cursor-pointer"
+                className="w-5 h-5 rounded bg-bg-primary text-accent-primary focus:ring-accent-primary cursor-pointer"
                 checked={state.stats?.privateCommits ?? false} 
                 onChange={(e) => onChange('stats', 'privateCommits', e.target.checked)} 
               />
@@ -327,7 +327,7 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech, onGenerate }) => {
         <button 
           onClick={prevStep}
           disabled={step === 1}
-          className={`flex items-center px-6 py-3 rounded-xl font-semibold transition-all ${step === 1 ? 'opacity-0 pointer-events-none' : 'bg-input-bg hover:bg-hover-bg border border-border-main'}`}
+          className={`flex items-center px-6 py-3 rounded-xl font-semibold transition-all ${step === 1 ? 'opacity-0 pointer-events-none' : 'bg-input-bg hover:bg-hover-bg'}`}
         >
           <ChevronLeft className="mr-2" size={20} /> Back
         </button>

@@ -26,9 +26,9 @@ const Preview = ({ markdown, theme }) => {
   };
 
   return (
-    <div className="h-full flex flex-col animate-slide-up shadow-2xl rounded-2xl overflow-hidden border border-border-main bg-panel-bg backdrop-blur-3xl">
+    <div className="h-full flex flex-col animate-slide-up shadow-2xl rounded-2xl overflow-hidden bg-panel-bg backdrop-blur-3xl">
       {/* Mac Window Header */}
-      <div className="flex justify-between items-center px-6 py-4 border-b border-border-main bg-[#0d0e12]/80">
+      <div className="flex justify-between items-center px-6 py-4 bg-[#0d0e12]/80">
         
         <div className="flex gap-2 items-center">
           <div className="w-3.5 h-3.5 rounded-full bg-red-500/90 shadow-[0_0_5px_rgba(239,68,68,0.5)]"></div>

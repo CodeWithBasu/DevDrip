@@ -139,7 +139,7 @@ export default function Page() {
     <div data-theme={theme} className="flex flex-col min-h-screen font-sans bg-bg-primary text-text-primary transition-colors duration-300 relative overflow-x-hidden">
       
       {/* Navbar */}
-      <nav className="glass-panel sticky top-0 z-50 flex justify-between items-center px-8 py-4 border-b border-border-main rounded-none backdrop-blur-xl">
+      <nav className="glass-panel sticky top-0 z-50 flex justify-between items-center px-8 py-4 rounded-none backdrop-blur-xl">
         <h2 
           className="text-2xl font-bold font-display tracking-tight text-text-primary cursor-pointer hover:text-accent-primary transition-colors" 
           onClick={() => appState !== 'onboarding' && setAppState('editor')}
