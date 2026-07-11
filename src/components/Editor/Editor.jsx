@@ -32,12 +32,12 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech, onGenerate }) => {
   const StepSection = ({ current, target, children, title, subtitle }) => {
     if (current !== target) return null;
     return (
-      <div className="animate-slide-up">
-        <div className="text-center mb-10">
-          <h2 className="text-4xl font-bold font-display text-text-primary mb-2">{title}</h2>
-          <p className="text-text-secondary text-lg">{subtitle}</p>
+      <div className="animate-slide-up w-full">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold font-display text-text-primary mb-3">{title}</h2>
+          <p className="text-text-secondary text-lg md:text-xl">{subtitle}</p>
         </div>
-        <div className="w-full max-w-3xl mx-auto">
+        <div className="w-full">
           {children}
         </div>
       </div>
