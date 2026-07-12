@@ -16,8 +16,8 @@ const Onboarding = ({ onComplete }) => {
         
         {/* Left Column - Content */}
         <div className="flex-1 w-full max-w-xl flex flex-col justify-center animate-fade-in-up">
-          <h1 className="text-[4rem] md:text-[5.5rem] leading-[1.1] font-semibold text-[#a2f0ca] tracking-tight mb-16">
-            Best Profile<br />Generator
+          <h1 className="text-[4rem] md:text-[5.5rem] leading-[1.1] font-bold text-white drop-shadow-[0_0_20px_rgba(162,240,202,0.6)] tracking-tight mb-16">
+            <span className="text-[#a2f0ca]">Next-Gen</span> Profile<br />Generator
           </h1>
           
           <form onSubmit={handleSubmit} className="w-full relative mb-12 group">
@@ -48,7 +48,7 @@ const Onboarding = ({ onComplete }) => {
           <img 
             src="/hero-illustration-transparent.png" 
             alt="Developer Illustration" 
-            className="w-full max-w-[600px] object-contain drop-shadow-2xl"
+            className="w-full max-w-[600px] object-contain drop-shadow-[0_0_30px_rgba(162,240,202,0.3)] animate-float"
           />
         </div>
 

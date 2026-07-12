@@ -5,6 +5,9 @@
   --animate-fade-in: fade-in 0.5s ease-out forwards;
   --animate-slide-up: slide-up 0.5s ease-out forwards;
   --animate-pulse-glow: pulse-glow 2s infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-typing: typing 3s steps(30, end) forwards;
+  --animate-grid-scroll: grid-scroll 20s linear infinite;
 
   @keyframes fade-in {
     from { opacity: 0; }
@@ -17,6 +20,19 @@
   @keyframes pulse-glow {
     0%, 100% { box-shadow: 0 0 15px rgba(99, 102, 241, 0.4); }
     50% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.8); }
+  }
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px) scale(1.02); }
+    100% { transform: translateY(0px); }
+  }
+  @keyframes typing {
+    from { clip-path: inset(0 100% 0 0); }
+    to { clip-path: inset(0 0 0 0); }
+  }
+  @keyframes grid-scroll {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
   }
 }
 
@@ -35,6 +51,20 @@
   .focus\:ring-accent-primary:focus { 
     --tw-ring-color: var(--accent-primary); 
     box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  }
+  
+  .cyber-grid {
+    background-size: 50px 50px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  }
+  [data-theme="minimalist"] .cyber-grid {
+    background-image: 
+      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
   }
 }
 

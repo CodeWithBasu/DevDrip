@@ -5,6 +5,19 @@ const InputLabel = ({ children }) => (
   <label className="block text-sm font-medium text-text-secondary mb-2 mt-8 first:mt-0 uppercase tracking-widest">{children}</label>
 );
 
+const CyberToggle = ({ checked, onChange, label }) => (
+  <label className="flex items-center gap-4 cursor-pointer group">
+    <div className="relative">
+      <input type="checkbox" className="sr-only" checked={checked} onChange={(e) => onChange(e.target.checked)} />
+      <div className={`block w-14 h-8 rounded-full transition-all duration-300 ${checked ? 'bg-accent-primary shadow-[0_0_15px_rgba(99,102,241,0.6)]' : 'bg-input-bg border border-border-main'}`}></div>
+      <div className={`absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition-transform duration-300 ${checked ? 'transform translate-x-6' : ''}`}></div>
+    </div>
+    <span className={`text-lg transition-colors duration-300 ${checked ? 'text-accent-primary font-bold drop-shadow-[0_0_8px_rgba(99,102,241,0.8)]' : 'text-text-secondary group-hover:text-text-primary'}`}>
+      {label}
+    </span>
+  </label>
+);
+
 const Editor = ({ state, onChange, onAddTech, onRemoveTech, onGenerate }) => {
   const [step, setStep] = useState(1);
   const totalSteps = 4;
@@ -34,8 +47,12 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech, onGenerate }) => {
     return (
       <div className="animate-slide-up w-full">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold font-display text-text-primary mb-3">{title}</h2>
-          <p className="text-text-secondary text-lg md:text-xl">{subtitle}</p>
+          <div className="inline-block">
+            <h2 className="text-4xl md:text-5xl font-bold font-display text-text-primary mb-3 overflow-hidden whitespace-nowrap animate-typing border-r-4 border-accent-primary pr-2">
+              {title}
+            </h2>
+          </div>
+          <p className="text-text-secondary text-lg md:text-xl animate-fade-in" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>{subtitle}</p>
         </div>
         <div className="w-full">
           {children}
@@ -212,74 +229,46 @@ const Editor = ({ state, onChange, onAddTech, onRemoveTech, onGenerate }) => {
           placeholder="e.g. CodeWithBasu"
         />
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 p-6 bg-input-bg rounded-xl">
-          <div className="flex flex-col gap-5">
-            <label className="flex items-center gap-3 cursor-pointer group">
-              <input 
-                type="checkbox" 
-                className="w-5 h-5 rounded bg-bg-primary text-accent-primary focus:ring-accent-primary cursor-pointer"
-                checked={state.stats?.showStats ?? true} 
-                onChange={(e) => onChange('stats', 'showStats', e.target.checked)} 
-              />
-              <span className="text-lg font-medium group-hover:text-accent-primary transition-colors">GitHub Stats Card</span>
-            </label>
-            <label className="flex items-center gap-3 cursor-pointer group">
-              <input 
-                type="checkbox" 
-                className="w-5 h-5 rounded bg-bg-primary text-accent-primary focus:ring-accent-primary cursor-pointer"
-                checked={state.stats?.showStreak ?? true} 
-                onChange={(e) => onChange('stats', 'showStreak', e.target.checked)} 
-              />
-              <span className="text-lg font-medium group-hover:text-accent-primary transition-colors">Streak Stats</span>
-            </label>
-            <label className="flex items-center gap-3 cursor-pointer group">
-              <input 
-                type="checkbox" 
-                className="w-5 h-5 rounded bg-bg-primary text-accent-primary focus:ring-accent-primary cursor-pointer"
-                checked={state.stats?.showTopLangs ?? true} 
-                onChange={(e) => onChange('stats', 'showTopLangs', e.target.checked)} 
-              />
-              <span className="text-lg font-medium group-hover:text-accent-primary transition-colors">Top Languages</span>
-            </label>
-            <label className="flex items-center gap-3 cursor-pointer group">
-              <input 
-                type="checkbox" 
-                className="w-5 h-5 rounded bg-bg-primary text-accent-primary focus:ring-accent-primary cursor-pointer"
-                checked={state.stats?.showVisitors ?? false} 
-                onChange={(e) => onChange('stats', 'showVisitors', e.target.checked)} 
-              />
-              <span className="text-lg font-medium group-hover:text-accent-primary transition-colors">Profile Visitors (Moe Counter)</span>
-            </label>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 p-6 bg-input-bg rounded-xl shadow-[inset_0_0_20px_rgba(0,0,0,0.2)]">
+          <div className="flex flex-col gap-6">
+            <CyberToggle 
+              checked={state.stats?.showStats ?? true} 
+              onChange={(val) => onChange('stats', 'showStats', val)} 
+              label="GitHub Stats Card" 
+            />
+            <CyberToggle 
+              checked={state.stats?.showStreak ?? true} 
+              onChange={(val) => onChange('stats', 'showStreak', val)} 
+              label="Streak Stats" 
+            />
+            <CyberToggle 
+              checked={state.stats?.showTopLangs ?? true} 
+              onChange={(val) => onChange('stats', 'showTopLangs', val)} 
+              label="Top Languages" 
+            />
+            <CyberToggle 
+              checked={state.stats?.showVisitors ?? false} 
+              onChange={(val) => onChange('stats', 'showVisitors', val)} 
+              label="Profile Visitors (Moe Counter)" 
+            />
           </div>
           
-          <div className="flex flex-col gap-5">
-            <label className="flex items-center gap-3 cursor-pointer group">
-              <input 
-                type="checkbox" 
-                className="w-5 h-5 rounded bg-bg-primary text-accent-primary focus:ring-accent-primary cursor-pointer"
-                checked={state.stats?.showBorder ?? true} 
-                onChange={(e) => onChange('stats', 'showBorder', e.target.checked)} 
-              />
-              <span className="text-lg text-text-secondary group-hover:text-text-primary transition-colors">Show Border</span>
-            </label>
-            <label className="flex items-center gap-3 cursor-pointer group">
-              <input 
-                type="checkbox" 
-                className="w-5 h-5 rounded bg-bg-primary text-accent-primary focus:ring-accent-primary cursor-pointer"
-                checked={state.stats?.lifetimeCommits ?? false} 
-                onChange={(e) => onChange('stats', 'lifetimeCommits', e.target.checked)} 
-              />
-              <span className="text-lg text-text-secondary group-hover:text-text-primary transition-colors">Lifetime Commits</span>
-            </label>
-            <label className="flex items-center gap-3 cursor-pointer group">
-              <input 
-                type="checkbox" 
-                className="w-5 h-5 rounded bg-bg-primary text-accent-primary focus:ring-accent-primary cursor-pointer"
-                checked={state.stats?.privateCommits ?? false} 
-                onChange={(e) => onChange('stats', 'privateCommits', e.target.checked)} 
-              />
-              <span className="text-lg text-text-secondary group-hover:text-text-primary transition-colors">Private Commits</span>
-            </label>
+          <div className="flex flex-col gap-6">
+            <CyberToggle 
+              checked={state.stats?.showBorder ?? true} 
+              onChange={(val) => onChange('stats', 'showBorder', val)} 
+              label="Show Border" 
+            />
+            <CyberToggle 
+              checked={state.stats?.lifetimeCommits ?? false} 
+              onChange={(val) => onChange('stats', 'lifetimeCommits', val)} 
+              label="Lifetime Commits" 
+            />
+            <CyberToggle 
+              checked={state.stats?.privateCommits ?? false} 
+              onChange={(val) => onChange('stats', 'privateCommits', val)} 
+              label="Private Commits" 
+            />
           </div>
         </div>
         

@@ -10,6 +10,7 @@ export default function Page() {
   const [theme, setTheme] = useState('dark'); // 'dark', 'minimalist', 'glassmorphism'
   
   const [isOnboarded, setIsOnboarded] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   
   const [state, setState] = useState({
     name: '',
@@ -135,11 +136,31 @@ export default function Page() {
     setAppState('editor');
   };
 
+  const handleMouseMove = (e) => {
+    setMousePos({ x: e.clientX, y: e.clientY });
+  };
+
   return (
-    <div data-theme={theme} className="flex flex-col min-h-screen font-sans bg-bg-primary text-text-primary transition-colors duration-300 relative overflow-x-hidden">
+    <div 
+      data-theme={theme} 
+      className="flex flex-col min-h-screen font-sans bg-bg-primary text-text-primary transition-colors duration-300 relative overflow-x-hidden"
+      onMouseMove={handleMouseMove}
+    >
       
-      {/* Navbar */}
-      <nav className="glass-panel sticky top-0 z-50 flex justify-between items-center px-8 py-4 rounded-none backdrop-blur-xl">
+      {/* Animated Futuristic Background Layer */}
+      <div className="pointer-events-none fixed inset-0 z-0 cyber-grid opacity-30 [animation:grid-scroll_20s_linear_infinite]"></div>
+      
+      {/* Interactive Mouse Spotlight Layer */}
+      <div 
+        className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-300"
+        style={{
+          background: `radial-gradient(800px circle at ${mousePos.x}px ${mousePos.y}px, rgba(99, 102, 241, 0.07), transparent 40%)`
+        }}
+      ></div>
+
+      <div className="relative z-10 flex flex-col min-h-screen">
+        {/* Navbar */}
+        <nav className="glass-panel sticky top-0 z-50 flex justify-between items-center px-8 py-4 rounded-none backdrop-blur-xl">
         <h2 
           className="text-2xl font-bold font-display tracking-tight text-text-primary cursor-pointer hover:text-accent-primary transition-colors" 
           onClick={() => appState !== 'onboarding' && setAppState('editor')}
@@ -200,6 +221,7 @@ export default function Page() {
         )}
 
       </main>
+      </div>
     </div>
   );
 }
